@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,13 +17,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { AccountdetailsComponent } from './dashboard/settings/accountdetails/accountdetails.component';
 import { MonthsoverviewComponent } from './dashboard/monthsoverview/monthsoverview.component';
-import { BalancesheetComponent } from './dashboard/monthsoverview/balancesheet/balancesheet.component';
-import { MngcategoriesComponent } from './dashboard/monthsoverview/mngcategories/mngcategories.component';
-import { AddcategoryComponent } from './dashboard/monthsoverview/mngcategories/addcategory/addcategory.component';
-import { EditcategoryComponent } from './dashboard/monthsoverview/mngcategories/editcategory/editcategory.component';
-import { MngentriesComponent } from './dashboard/monthsoverview/mngentries/mngentries.component';
-import { AddentryComponent } from './dashboard/monthsoverview/mngentries/addentry/addentry.component';
-import { EditentryComponent } from './dashboard/monthsoverview/mngentries/editentry/editentry.component';
+import { CategoriesComponent } from './dashboard/settings/categories/categories.component';
+import { AddCategoryComponent } from './dashboard/settings/categories/add-category/add-category.component';
+import { EditCategoryComponent } from './dashboard/settings/categories/edit-category/edit-category.component';
+import { AllCategoriesComponent } from './dashboard/settings/categories/all-categories/all-categories.component';
+import { ExpensesComponent } from './dashboard/monthsoverview/expenses/expenses.component';
+import { AllExpensesComponent } from './dashboard/monthsoverview/expenses/all-expenses/all-expenses.component';
+import { EditExpensesComponent } from './dashboard/monthsoverview/expenses/edit-expenses/edit-expenses.component';
+import { AddExpensesComponent } from './dashboard/monthsoverview/expenses/add-expenses/add-expenses.component';
 
 @NgModule({
   declarations: [
@@ -40,19 +42,23 @@ import { EditentryComponent } from './dashboard/monthsoverview/mngentries/editen
     SettingsComponent,
     AccountdetailsComponent,
     MonthsoverviewComponent,
-    BalancesheetComponent,
-    MngcategoriesComponent,
-    AddcategoryComponent,
-    EditcategoryComponent,
-    MngentriesComponent,
-    AddentryComponent,
-    EditentryComponent
+    CategoriesComponent,
+    AddCategoryComponent,
+    EditCategoryComponent,
+    AllCategoriesComponent,
+    ExpensesComponent,
+    AllExpensesComponent,
+    EditExpensesComponent,
+    AddExpensesComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap:[AppComponent],
+
 })
 export class AppModule { }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MngcategoriesComponent } from './mngcategories.component';
+import { AllCategoriesComponent } from './all-categories.component';
 
-describe('MngcategoriesComponent', () => {
-  let component: MngcategoriesComponent;
-  let fixture: ComponentFixture<MngcategoriesComponent>;
+describe('AllCategoriesComponent', () => {
+  let component: AllCategoriesComponent;
+  let fixture: ComponentFixture<AllCategoriesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MngcategoriesComponent ]
+      declarations: [ AllCategoriesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MngcategoriesComponent);
+    fixture = TestBed.createComponent(AllCategoriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

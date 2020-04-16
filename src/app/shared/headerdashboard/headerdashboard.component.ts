@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./headerdashboard.component.css']
 })
 export class HeaderdashboardComponent implements OnInit {
-
+  
+  public isMenuCollapsed = true;
   constructor() { }
 
   ngOnInit(): void {

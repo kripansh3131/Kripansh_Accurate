@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./headerhome.component.css']
 })
 export class HeaderhomeComponent implements OnInit {
-
+  
+  public isMenuCollapsed = true;
   constructor() { }
 
   ngOnInit(): void {
