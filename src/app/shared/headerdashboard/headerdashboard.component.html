@@ -18,6 +18,7 @@
         <div ngbDropdownMenu>
           <button ngbDropdownItem [routerLink]="'/dashboard/settings/account-details'">Account</button>
           <button ngbDropdownItem [routerLink]="'/dashboard/settings/categories'">Categories</button>
+          <button ngbDropdownItem (click)="auth.logOut()">Logout</button>
         </div>
       </li>
       <li class="nav-item active">

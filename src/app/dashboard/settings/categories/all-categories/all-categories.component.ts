@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddCategoryComponent } from '../add-category/add-category.component';
+import { EditCategoryComponent } from '../edit-category/edit-category.component';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-all-categories',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllCategoriesComponent implements OnInit {
 
-  constructor() { }
+  categories=[]
+
+  constructor(private modalService: NgbModal, public categoryService:CategoryService) { }
 
   ngOnInit(): void {
+    this.categories=this.categoryService.getAllCategories()
   }
 
+  addCategory() {
+    const modalRef = this.modalService.open(AddCategoryComponent,{ centered: true});
+  }
+
+  editCategory(id) {
+    const modalRef = this.modalService.open(EditCategoryComponent,{ centered: true});
+    this.categoryService.getId(id)
+  }
 }

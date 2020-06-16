@@ -1,1 +1,21 @@
-<p>all-categories works!</p>
+<button class="btn btn-lg btn-outline-primary" (click)="addCategory()">Add Category</button>
+<br>
+  
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">All Categories</th>
+        <th scope="col">Edit Category</th>
+        <th scope="col">Delete Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories;let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{category.name}}</td>
+        <td><a (click)="editCategory(i)">Edit</a></td>
+        <td><a (click)="categoryService.deleteCategory(i)">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>

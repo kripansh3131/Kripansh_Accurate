@@ -1,1 +1,27 @@
-<p>all-expenses works!</p>
+<button class="btn btn-lg btn-outline-primary" (click)="openAddExpense()">Add Expense</button>
+<br>
+  
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Date</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Category</th>
+        <th scope="col">Description</th>
+        <th scope="col">Edit Expense</th>
+        <th scope="col">Delete Expense</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>20-04-2020</td>
+        <td> Rs 2000</td>
+        <td>Food</td>
+        <td>Food Expense</td>
+        <td><a href="" (click)="openEditExpense()">Edit</a></td>
+        <td><a href="">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>

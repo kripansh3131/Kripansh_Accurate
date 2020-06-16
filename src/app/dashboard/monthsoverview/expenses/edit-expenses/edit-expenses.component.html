@@ -1,1 +1,33 @@
-<p>edit-expenses works!</p>
+<div class="modal-header">
+    <h4 class="modal-title">Edit Expense</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="form-group">
+          <label for="exampleInputExpense1">Date</label>
+          <input type="date" class="form-control" id="exampleInputExpense1">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputExpense2">Amount</label>
+            <input type="number" class="form-control" id="exampleInputExpense2">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Category</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        <div class="form-group">
+            <label for="exampleInputExpense3">Description</label>
+            <input type="text" class="form-control" id="exampleInputExpense3">
+          </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>

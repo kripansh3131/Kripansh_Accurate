@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "accurate-3131": {
+      "hosting": {
+        "FinanceApp": [
+          "accurate-3131"
+        ]
+      }
+    }
+  }
+}
