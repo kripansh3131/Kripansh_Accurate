@@ -8,16 +8,16 @@ import { ForgotpwdComponent } from './home/auth/forgotpwd/forgotpwd.component';
 import { HelpComponent } from './help/help.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MonthsoverviewComponent } from './dashboard/monthsoverview/monthsoverview.component';
-import { SettingsComponent } from './dashboard/settings/settings.component';
-import { AccountdetailsComponent } from './dashboard/settings/accountdetails/accountdetails.component';
-import { CategoriesComponent } from './dashboard/settings/categories/categories.component';
-import { AllCategoriesComponent } from './dashboard/settings/categories/all-categories/all-categories.component';
-import { AddCategoryComponent } from './dashboard/settings/categories/add-category/add-category.component';
-import { EditCategoryComponent } from './dashboard/settings/categories/edit-category/edit-category.component';
+import { AccountdetailsComponent } from './dashboard/accountdetails/accountdetails.component';
+import { CategoriesComponent } from './dashboard/categories/categories.component';
+import { AllCategoriesComponent } from './dashboard/categories/all-categories/all-categories.component';
+import { AddCategoryComponent } from './dashboard/categories/add-category/add-category.component';
+import { EditCategoryComponent } from './dashboard/categories/edit-category/edit-category.component';
 import { ExpensesComponent } from './dashboard/monthsoverview/expenses/expenses.component';
 import { AllExpensesComponent } from './dashboard/monthsoverview/expenses/all-expenses/all-expenses.component';
 import { AddExpensesComponent } from './dashboard/monthsoverview/expenses/add-expenses/add-expenses.component';
 import { EditExpensesComponent } from './dashboard/monthsoverview/expenses/edit-expenses/edit-expenses.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -33,9 +33,10 @@ const routes: Routes = [
     {path:'**',component:AuthComponent},
   ]},
 
-  {path:'dashboard',component:DashboardComponent,children:[
+  {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuardService],children:[
     {path:'',redirectTo:'months-overview',pathMatch:'full'},
     {path:'help',component:HelpComponent},
+    {path:'account-details',component:AccountdetailsComponent},
 
     {path:'months-overview',component:MonthsoverviewComponent,children:[
 
@@ -49,17 +50,12 @@ const routes: Routes = [
       {path:'**',component:MonthsoverviewComponent},
     ]},
 
-    {path:'settings',component:SettingsComponent,children:[
-      {path:'account-details',component:AccountdetailsComponent},
-
-      {path:'categories',component:CategoriesComponent,children:[
-        {path:'',redirectTo:'all-categories',pathMatch:'full'},
-        {path:'all-categories',component:AllCategoriesComponent},
-        {path:'add-category',component:AddCategoryComponent},
-        {path:'edit-category',component:EditCategoryComponent},
-        {path:'**',component:AllCategoriesComponent},
-      ]},
-      {path:'**',component:DashboardComponent},
+    {path:'categories',component:CategoriesComponent,children:[
+      {path:'',redirectTo:'all-categories',pathMatch:'full'},
+      {path:'all-categories',component:AllCategoriesComponent},
+      {path:'add-category',component:AddCategoryComponent},
+      {path:'edit-category',component:EditCategoryComponent},
+      {path:'**',component:AllCategoriesComponent},
     ]},
     {path:'**',component:DashboardComponent},
   ]},

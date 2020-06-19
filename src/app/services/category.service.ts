@@ -1,36 +1,51 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../models/category';
+import { AuthService } from './auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  categories:Category[]=[{name:"Food"},{name:"Entertainment"}]
-  id:string
+  categoryId
+  categoryName
 
-  constructor() { }
+  constructor(public auth:AuthService,public db:AngularFirestore) { }
 
   addCategory(categoryName:string){
     let category = new Category()
     category.name = categoryName
-    this.categories.push(category)
-    console.log(this.categories)
+    let catObject=Object.assign({},category)
+    this.db.collection("users").doc(this.auth.getUid()).collection("category").add(catObject)
   }
 
   deleteCategory(id){
-    this.categories.splice(id,1)
+    this.db.collection("users").doc(this.auth.getUid()).collection("category").doc(id).delete()
   }
 
   getAllCategories(){
-    return this.categories
+    return this.db.collection("users").doc(this.auth.getUid()).collection("category").snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as any;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
-  getId(id){
-    this.id=id
+  editCategory(categoryId,categoryName){
+    this.categoryId = categoryId
+    this.categoryName= categoryName
   }
 
-  editCategory(categoryName){
-    this.categories[this.id].name = categoryName
+  getCategoryByDocId(){
+    return this.db.collection("users").doc(this.auth.getUid()).collection("category").doc(this.categoryId).valueChanges()
+  }
+
+  updateCategory(categoryName){
+    this.db.collection("users").doc(this.auth.getUid()).collection("category").doc(this.categoryId).update(Object.assign({},categoryName))
   }
 }

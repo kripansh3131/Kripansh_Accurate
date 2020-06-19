@@ -21,17 +21,17 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderhomeComponent } from './shared/headerhome/headerhome.component';
 import { HeaderdashboardComponent } from './shared/headerdashboard/headerdashboard.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SettingsComponent } from './dashboard/settings/settings.component';
-import { AccountdetailsComponent } from './dashboard/settings/accountdetails/accountdetails.component';
+import { AccountdetailsComponent } from './dashboard/accountdetails/accountdetails.component';
 import { MonthsoverviewComponent } from './dashboard/monthsoverview/monthsoverview.component';
-import { CategoriesComponent } from './dashboard/settings/categories/categories.component';
-import { AddCategoryComponent } from './dashboard/settings/categories/add-category/add-category.component';
-import { EditCategoryComponent } from './dashboard/settings/categories/edit-category/edit-category.component';
-import { AllCategoriesComponent } from './dashboard/settings/categories/all-categories/all-categories.component';
+import { CategoriesComponent } from './dashboard/categories/categories.component';
+import { AddCategoryComponent } from './dashboard/categories/add-category/add-category.component';
+import { EditCategoryComponent } from './dashboard/categories/edit-category/edit-category.component';
+import { AllCategoriesComponent } from './dashboard/categories/all-categories/all-categories.component';
 import { ExpensesComponent } from './dashboard/monthsoverview/expenses/expenses.component';
 import { AllExpensesComponent } from './dashboard/monthsoverview/expenses/all-expenses/all-expenses.component';
 import { EditExpensesComponent } from './dashboard/monthsoverview/expenses/edit-expenses/edit-expenses.component';
 import { AddExpensesComponent } from './dashboard/monthsoverview/expenses/add-expenses/add-expenses.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,6 @@ import { AddExpensesComponent } from './dashboard/monthsoverview/expenses/add-ex
     HeaderhomeComponent,
     HeaderdashboardComponent,
     DashboardComponent,
-    SettingsComponent,
     AccountdetailsComponent,
     MonthsoverviewComponent,
     CategoriesComponent,
@@ -69,7 +68,7 @@ import { AddExpensesComponent } from './dashboard/monthsoverview/expenses/add-ex
     AngularFireAuthModule,
 
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap:[AppComponent],
 
 })

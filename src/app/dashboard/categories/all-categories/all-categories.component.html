@@ -14,8 +14,8 @@
       <tr *ngFor="let category of categories;let i=index">
         <th scope="row">{{i+1}}</th>
         <td>{{category.name}}</td>
-        <td><a (click)="editCategory(i)">Edit</a></td>
-        <td><a (click)="categoryService.deleteCategory(i)">Delete</a></td>
+        <td><a (click)="editCategory(category.id,category.name)">Edit</a></td>
+        <td><a (click)="deleteCategory(category.id)">Delete</a></td>
       </tr>
     </tbody>
   </table>

@@ -17,7 +17,6 @@ export class SigninComponent implements OnInit {
   }
 
   signIn(){
-    console.log(this.email,this.password)
     this.auth.signIn(this.email,this.password)
   }
 

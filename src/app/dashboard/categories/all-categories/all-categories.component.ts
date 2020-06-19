@@ -16,15 +16,21 @@ export class AllCategoriesComponent implements OnInit {
   constructor(private modalService: NgbModal, public categoryService:CategoryService) { }
 
   ngOnInit(): void {
-    this.categories=this.categoryService.getAllCategories()
+    this.categoryService.getAllCategories().subscribe(res=>{
+      this.categories=res
+    })
   }
 
   addCategory() {
     const modalRef = this.modalService.open(AddCategoryComponent,{ centered: true});
   }
 
-  editCategory(id) {
+  editCategory(categoryId,categoryName) {
     const modalRef = this.modalService.open(EditCategoryComponent,{ centered: true});
-    this.categoryService.getId(id)
+    this.categoryService.editCategory(categoryId,categoryName)
+  }
+
+  deleteCategory(id){
+    this.categoryService.deleteCategory(id)
   }
 }

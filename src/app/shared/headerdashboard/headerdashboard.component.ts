@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-headerdashboard',
@@ -9,7 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderdashboardComponent implements OnInit {
   
   public isMenuCollapsed = true;
-  constructor(public auth:AuthService) { }
+
+  constructor() { }
 
   ngOnInit(): void {
   }

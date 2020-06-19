@@ -9,12 +9,18 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class EditCategoryComponent implements OnInit {
 
-  categoryName:string
+  category
 
   constructor(public activeModal: NgbActiveModal,public categoryService:CategoryService) { }
 
   ngOnInit(): void {
-    this.categoryName = this.categoryService.categories[this.categoryService.id].name
+    this.getCategory()
+  }
+
+  getCategory(){
+    this.categoryService.getCategoryByDocId().subscribe(res=>{
+      this.category = res
+    })
   }
 
 }
