@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { ExpenseService } from 'src/app/services/expense.service';
+import { Expense } from 'src/app/models/expense';
 
 @Component({
   selector: 'app-add-expenses',
@@ -8,9 +10,19 @@ import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class AddExpensesComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal) { }
+  expense=new Expense()
+  userCategories :any []
+
+  constructor(public activeModal: NgbActiveModal,public expenseService:ExpenseService) { }
 
   ngOnInit(): void {
+    this.expenseService.getUserCategories().subscribe(res=>{
+      this.userCategories = res
+    })
+  }
+
+  addExpense(){
+    this.expenseService.addExpense(this.expense)
   }
 
 }

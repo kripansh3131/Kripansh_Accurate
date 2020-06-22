@@ -14,14 +14,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>20-04-2020</td>
-        <td> Rs 2000</td>
-        <td>Food</td>
-        <td>Food Expense</td>
-        <td><a href="" (click)="openEditExpense()">Edit</a></td>
-        <td><a href="">Delete</a></td>
+      <tr *ngFor="let expense of expenses;let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{expense.timestamp.toDate() | date}}</td>
+        <td>{{expense.amount}}</td>
+        <td>{{expense.category.name}}</td>
+        <td>{{expense.description}}</td>
+        <td><a (click)="openEditExpense(expense)">Edit</a></td>
+        <td><a (click)="deleteExpense(expense.id)">Delete</a></td>
       </tr>
     </tbody>
   </table>

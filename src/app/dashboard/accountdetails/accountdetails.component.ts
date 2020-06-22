@@ -8,10 +8,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AccountdetailsComponent implements OnInit {
 
-  accountDetails
+   accountDetails:{email,username}={email:"",username:""}
 
   constructor(public auth:AuthService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.accountDetails.email = this.auth.getEmail()
+    this.accountDetails.username = this.auth.getUsername()
+    console.log(this.accountDetails)
+  }
 
 }

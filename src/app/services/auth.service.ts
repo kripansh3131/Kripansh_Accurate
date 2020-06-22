@@ -8,12 +8,18 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AuthService {
 
-  uid=null
+  private uid = null
+  private email = null
+  private username = null
 
-  constructor(public router:Router,public fireAuth:AngularFireAuth,public db:AngularFirestore) { 
+  constructor(private router:Router,private fireAuth:AngularFireAuth,private db:AngularFirestore) { 
     this.fireAuth.authState.subscribe(res=>{
-      this.uid=res.uid
+      this.uid = res.uid
+      this.email = res.email
       this.router.navigateByUrl("/dashboard")
+      this.db.collection("users").valueChanges().subscribe(res=>{
+        this.username = res[0]
+      })
     })
   }
 
@@ -48,6 +54,7 @@ export class AuthService {
     this.fireAuth.createUserWithEmailAndPassword(email,password,).then(res=>{
       if(res.user.uid){
         this.uid=res.user.uid
+        this.db.collection("users").add(Object.assign({},username))
         this.router.navigateByUrl("/dashboard")
       }
     }).catch(err=>{
@@ -57,6 +64,14 @@ export class AuthService {
 
   getUid(){
     return this.uid
+  }
+
+  getEmail(){
+    return this.email
+  }
+
+  getUsername(){
+    return this.username.name
   }
 
 }

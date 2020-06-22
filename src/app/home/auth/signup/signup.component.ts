@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SignupComponent implements OnInit {
 
-  username
+  username:{name:string}={name:""}
   email
   password
 

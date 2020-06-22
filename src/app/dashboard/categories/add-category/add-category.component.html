@@ -9,6 +9,6 @@
         <div class="form-group">
           <input type="text" class="form-control" name="categoryName" placeholder="Category Name" [(ngModel)]="categoryName">
         </div>
-        <button type="submit" (click)="categoryService.addCategory(categoryName); activeModal.dismiss('Cross click')" class="btn btn-primary">Add</button>
+        <button type="submit" (click)="addCategory(); activeModal.dismiss('Cross click')" class="btn btn-primary">Add</button>
     </form>
 </div>

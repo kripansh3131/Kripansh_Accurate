@@ -10,10 +10,9 @@ import { map } from 'rxjs/operators';
 })
 export class CategoryService {
 
-  categoryId
-  categoryName
+  private category
 
-  constructor(public auth:AuthService,public db:AngularFirestore) { }
+  constructor(private auth:AuthService,private db:AngularFirestore) { }
 
   addCategory(categoryName:string){
     let category = new Category()
@@ -36,16 +35,16 @@ export class CategoryService {
     );
   }
 
-  editCategory(categoryId,categoryName){
-    this.categoryId = categoryId
-    this.categoryName= categoryName
+  editCategory(category){
+    this.category = category
   }
 
-  getCategoryByDocId(){
-    return this.db.collection("users").doc(this.auth.getUid()).collection("category").doc(this.categoryId).valueChanges()
+  getCategory(){
+    return this.category
   }
 
   updateCategory(categoryName){
-    this.db.collection("users").doc(this.auth.getUid()).collection("category").doc(this.categoryId).update(Object.assign({},categoryName))
+    this.db.collection("users").doc(this.auth.getUid()).collection("category").doc(this.category.id).update(Object.assign({},categoryName))
   }
+  
 }

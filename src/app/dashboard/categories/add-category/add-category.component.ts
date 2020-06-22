@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { CategoryService } from 'src/app/services/category.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-category',
@@ -12,9 +11,13 @@ export class AddCategoryComponent implements OnInit {
 
   categoryName:string
 
-  constructor(public activeModal: NgbActiveModal, public categoryService:CategoryService, public router:Router) { }
+  constructor(public activeModal: NgbActiveModal, public categoryService:CategoryService) { }
 
   ngOnInit(): void {
+  }
+
+  addCategory(){
+    this.categoryService.addCategory(this.categoryName)
   }
 
 }

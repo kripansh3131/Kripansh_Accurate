@@ -14,13 +14,11 @@ export class EditCategoryComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal,public categoryService:CategoryService) { }
 
   ngOnInit(): void {
-    this.getCategory()
+    this.category = this.categoryService.getCategory()
   }
 
-  getCategory(){
-    this.categoryService.getCategoryByDocId().subscribe(res=>{
-      this.category = res
-    })
+  updateCategory(){
+    this.categoryService.updateCategory(this.category)
   }
 
 }

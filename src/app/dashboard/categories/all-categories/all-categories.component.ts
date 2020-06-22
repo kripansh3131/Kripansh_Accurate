@@ -13,7 +13,7 @@ export class AllCategoriesComponent implements OnInit {
 
   categories=[]
 
-  constructor(private modalService: NgbModal, public categoryService:CategoryService) { }
+  constructor(public modalService: NgbModal, public categoryService:CategoryService) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe(res=>{
@@ -25,9 +25,9 @@ export class AllCategoriesComponent implements OnInit {
     const modalRef = this.modalService.open(AddCategoryComponent,{ centered: true});
   }
 
-  editCategory(categoryId,categoryName) {
+  editCategory(category) {
     const modalRef = this.modalService.open(EditCategoryComponent,{ centered: true});
-    this.categoryService.editCategory(categoryId,categoryName)
+    this.categoryService.editCategory(category)
   }
 
   deleteCategory(id){

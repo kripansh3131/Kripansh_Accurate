@@ -30,36 +30,33 @@ const routes: Routes = [
     {path:'signin',component:SigninComponent},
     {path:'signup',component:SignupComponent},
     {path:'forgot-password',component:ForgotpwdComponent},
-    {path:'**',component:AuthComponent},
+    {path:'**',redirectTo:'auth'},
   ]},
 
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuardService],children:[
     {path:'',redirectTo:'months-overview',pathMatch:'full'},
     {path:'help',component:HelpComponent},
     {path:'account-details',component:AccountdetailsComponent},
+    {path:'months-overview',component:MonthsoverviewComponent},
 
-    {path:'months-overview',component:MonthsoverviewComponent,children:[
-
-      {path:'expenses',component:ExpensesComponent,children:[
-        {path:'',redirectTo:'all-expenses',pathMatch:'full'},
-        {path:'all-expenses',component:AllExpensesComponent},
-        {path:'add-expenses',component:AddExpensesComponent},
-        {path:'edit-expenses',component:EditExpensesComponent},
-        {path:'**',component:AllExpensesComponent},
+    {path:'expenses',component:ExpensesComponent,children:[
+      {path:'',redirectTo:'all-expenses',pathMatch:'full'},
+      {path:'all-expenses',component:AllExpensesComponent},
+      {path:'add-expenses',component:AddExpensesComponent},
+      {path:'edit-expenses',component:EditExpensesComponent},
+      {path:'**',redirectTo:'all-expenses'},
       ]},
-      {path:'**',component:MonthsoverviewComponent},
-    ]},
 
     {path:'categories',component:CategoriesComponent,children:[
       {path:'',redirectTo:'all-categories',pathMatch:'full'},
       {path:'all-categories',component:AllCategoriesComponent},
       {path:'add-category',component:AddCategoryComponent},
       {path:'edit-category',component:EditCategoryComponent},
-      {path:'**',component:AllCategoriesComponent},
+      {path:'**',redirectTo:'all-categories'},
     ]},
-    {path:'**',component:DashboardComponent},
+    {path:'**',redirectTo:'dashboard'},
   ]},
-  {path:'**',component:HomeComponent},
+  {path:'**',redirectTo:'home'},
 ];
 
 @NgModule({

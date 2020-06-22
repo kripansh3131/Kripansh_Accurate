@@ -6,28 +6,24 @@
 </div>
 <div class="modal-body">
     <form>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="exampleInputExpense1">Date</label>
-          <input type="date" class="form-control" id="exampleInputExpense1">
-        </div>
+          <input type="date" class="form-control" id="exampleInputExpense1" name="date" [(ngModel)]='expense.timestamp'>
+        </div> -->
         <div class="form-group">
             <label for="exampleInputExpense2">Amount</label>
-            <input type="number" class="form-control" id="exampleInputExpense2">
+            <input type="number" class="form-control" id="exampleInputExpense2" name="amount" [(ngModel)]='expense.amount'>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Category</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select class="form-control" id="exampleFormControlSelect1" name="category" [(ngModel)]='expense.category.id'>
+              <option [value]="category.id" *ngFor="let category of userCategories">{{category.name}}</option>
             </select>
-          </div>
+        </div>
         <div class="form-group">
-            <label for="exampleInputExpense3">Description</label>
-            <input type="text" class="form-control" id="exampleInputExpense3">
-          </div>
-        <button type="submit" class="btn btn-primary">Add</button>
+          <label for="exampleInputExpense3">Description</label>
+          <textarea type="text" class="form-control" id="exampleInputExpense3" rows="3" name="description" [(ngModel)]='expense.description'></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="addExpense(); activeModal.dismiss('Cross click')">Add</button>
     </form>
 </div>
